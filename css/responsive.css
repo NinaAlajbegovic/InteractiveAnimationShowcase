@@ -1,0 +1,133 @@
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 80px;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 1rem 2rem 2rem;
+        border-bottom: 1px solid var(--border-color);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .hero-title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .hero-stats {
+        gap: 1rem;
+    }
+
+    .stat-number {
+        font-size: 1.8rem;
+    }
+
+    .hover-demos,
+    .reveal-grid,
+    .tips-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .perf-comparison {
+        grid-template-columns: 1fr;
+    }
+
+    .perf-divider {
+        padding-top: 0;
+        justify-content: center;
+    }
+
+    .timing-track {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .timing-label {
+        text-align: left;
+        min-width: auto;
+    }
+
+    .complex-demos {
+        grid-template-columns: 1fr;
+    }
+
+    .tilt-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .stagger-grid {
+        max-width: 300px;
+    }
+
+    .h-scroll-panel {
+        min-height: 250px;
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-cta {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .loading-demos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .svg-demo-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .micro-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .gradient-orb {
+        animation: none;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid var(--purple);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--purple);
+    outline-offset: 2px;
+}
