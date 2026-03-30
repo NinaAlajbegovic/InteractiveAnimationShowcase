@@ -1,0 +1,166 @@
+.reveal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.reveal-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.reveal-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.reveal-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.reveal-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.reveal-card code {
+    display: block;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    padding: 0.75rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    color: var(--cyan);
+}
+
+.parallax-demo {
+    position: relative;
+    height: 500px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: radial-gradient(ellipse at center, rgba(139, 92, 246, 0.12) 0%, rgba(10, 10, 15, 0.95) 70%);
+    border: 1px solid var(--border-color);
+}
+
+.parallax-layer {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallax-shape {
+    position: absolute;
+    border-radius: 50%;
+}
+
+.shape-1 { width: 200px; height: 200px; background: var(--purple); top: 15%; left: 10%; opacity: 0.5; box-shadow: 0 0 60px rgba(139, 92, 246, 0.4); }
+.shape-2 { width: 150px; height: 150px; background: var(--cyan); bottom: 20%; right: 15%; opacity: 0.45; box-shadow: 0 0 50px rgba(6, 182, 212, 0.35); }
+.shape-3 { width: 100px; height: 100px; background: var(--rose); top: 40%; left: 60%; opacity: 0.5; box-shadow: 0 0 40px rgba(236, 72, 153, 0.35); }
+.shape-4 { width: 80px; height: 80px; background: var(--amber); border-radius: 12px; top: 30%; left: 25%; opacity: 0.55; box-shadow: 0 0 40px rgba(245, 158, 11, 0.3); }
+.shape-5 { width: 120px; height: 120px; background: var(--emerald); border-radius: 16px; bottom: 25%; right: 30%; opacity: 0.5; box-shadow: 0 0 50px rgba(16, 185, 129, 0.3); }
+
+.parallax-text {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 10;
+}
+
+.horizontal-scroll-wrapper {
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.horizontal-scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+    width: fit-content;
+}
+
+.h-scroll-panel {
+    width: 80vw;
+    max-width: 900px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.panel-image {
+    width: 100%;
+    max-width: 500px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.h-scroll-panel h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.h-scroll-panel p {
+    color: var(--text-secondary);
+    max-width: 400px;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.panel-1 { background: linear-gradient(135deg, rgba(139,92,246,0.1), rgba(139,92,246,0.02)); }
+.panel-2 { background: linear-gradient(135deg, rgba(6,182,212,0.1), rgba(6,182,212,0.02)); }
+.panel-3 { background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.02)); }
+.panel-4 { background: linear-gradient(135deg, rgba(236,72,153,0.1), rgba(236,72,153,0.02)); }
+
+.scroll-progress-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.progress-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.progress-label {
+    min-width: 140px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+.skill-bar {
+    flex: 1;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--gradient-1);
+    border-radius: 4px;
+    transition: width 1.5s ease;
+}

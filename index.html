@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Animation Showcase</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/hover.css">
+    <link rel="stylesheet" href="css/buttons-demo.css">
+    <link rel="stylesheet" href="css/loading.css">
+    <link rel="stylesheet" href="css/timing.css">
+    <link rel="stylesheet" href="css/gsap.css">
+    <link rel="stylesheet" href="css/svg.css">
+    <link rel="stylesheet" href="css/scroll.css">
+    <link rel="stylesheet" href="css/micro.css">
+    <link rel="stylesheet" href="css/performance.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">&#9670;</span>
+                <span class="logo-text">AnimateShowcase</span>
+            </a>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active">Početna</a></li>
+                <li><a href="#css-animations" class="nav-link">CSS Animacije</a></li>
+                <li><a href="#gsap-animations" class="nav-link">GSAP Animacije</a></li>
+                <li><a href="#svg-animations" class="nav-link">SVG Animacije</a></li>
+                <li><a href="#scroll-effects" class="nav-link">Scroll Efekti</a></li>
+                <li><a href="#micro-interactions" class="nav-link">Mikro-interakcije</a></li>
+                <li><a href="#performance" class="nav-link">Performanse</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+            <canvas id="particleCanvas"></canvas>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Diplomski Rad — Interaktivne Web Animacije</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line line-1">Interactive</span>
+                <span class="title-line line-2">Animation</span>
+                <span class="title-line line-3 gradient-text">Showcase</span>
+            </h1>
+            <p class="hero-description">
+                Istraživanje savremenih tehnika web animacija — od CSS tranzicija i keyframe animacija, 
+                preko JavaScript biblioteka poput GSAP-a, do optimizacije performansi. Ovaj projekat 
+                demonstrira kako animacije poboljšavaju korisničko iskustvo na webu.
+            </p>
+            <div class="hero-cta">
+                <a href="#css-animations" class="btn btn-primary">
+                    <span>Istraži Animacije</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#performance" class="btn btn-secondary">Performanse Demo</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number" data-target="6">0</span>
+                    <span class="stat-label">Sekcija</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="30">0</span>
+                    <span class="stat-label">Animacija</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="3">0</span>
+                    <span class="stat-label">Tehnologije</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="css-animations">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">01</span>
+                <h2 class="section-title">CSS <span class="gradient-text">Animacije</span></h2>
+                <p class="section-description">
+                    CSS animacije omogućavaju glatke vizuelne prijelaze bez potrebe za JavaScriptom. 
+                    Koriste se <code>@keyframes</code> pravila, <code>transition</code> svojstva i 
+                    <code>transform</code> funkcije za kreiranje efekata koji se izvršavaju na GPU-u, 
+                    čime se postiže izuzetno glatko iskustvo pri 60 FPS.
+                </p>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Hover Efekti</h3>
+                <p class="demo-description">
+                    Hover efekti se aktiviraju kada korisnik pređe mišem preko elementa. Koriste CSS 
+                    <code>:hover</code> pseudo-klasu u kombinaciji sa <code>transition</code> svojstvom 
+                    za glatke prijelaze. Ovi efekti pružaju vizuelni feedback korisniku i poboljšavaju 
+                    interaktivnost stranice.
+                </p>
+                <div class="demo-grid hover-demos">
+                    <div class="hover-card hover-lift">
+                        <div class="card-icon">↑</div>
+                        <h4>Lift Efekat</h4>
+                        <p>Transform: translateY(-10px) uz box-shadow za efekat lebdenja. Koristi transition za glatki prijelaz.</p>
+                        <code>transform: translateY(-10px);<br>box-shadow: 0 20px 40px rgba(0,0,0,0.3);</code>
+                    </div>
+                    <div class="hover-card hover-scale">
+                        <div class="card-icon">⬡</div>
+                        <h4>Scale Efekat</h4>
+                        <p>Transform: scale(1.05) povećava element za 5%. Vizuelno naglašava element pod kursorom.</p>
+                        <code>transform: scale(1.05);<br>transition: transform 0.3s ease;</code>
+                    </div>
+                    <div class="hover-card hover-glow">
+                        <div class="card-icon">✦</div>
+                        <h4>Glow Efekat</h4>
+                        <p>Box-shadow sa neon bojom kreira efekat sijanja. Kombinuje se sa border-color tranzicijom.</p>
+                        <code>box-shadow: 0 0 30px rgba(139,92,246,0.5);<br>border-color: #8b5cf6;</code>
+                    </div>
+                    <div class="hover-card hover-rotate">
+                        <div class="card-icon">↻</div>
+                        <h4>Rotate Efekat</h4>
+                        <p>Transform: rotate(5deg) rotira element za 5 stepeni. Suptilna rotacija privlači pažnju.</p>
+                        <code>transform: rotate(5deg);<br>transition: transform 0.3s cubic-bezier(.4,0,.2,1);</code>
+                    </div>
+                    <div class="hover-card hover-border">
+                        <div class="card-icon">◻</div>
+                        <h4>Border Animacija</h4>
+                        <p>Gradient border koji se pojavljuje na hover koristeći background-clip i gradient pozadine.</p>
+                        <code>background: linear-gradient(...);<br>background-clip: padding-box;</code>
+                    </div>
+                    <div class="hover-card hover-blur">
+                        <div class="card-icon">◎</div>
+                        <h4>Blur Efekat</h4>
+                        <p>Backdrop-filter: blur() za glassmorphism efekat. Popularan u modernom UI dizajnu.</p>
+                        <code>backdrop-filter: blur(20px);<br>background: rgba(255,255,255,0.1);</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Button Animacije</h3>
+                <p class="demo-description">
+                    Animirani dugmadi pružaju jasan vizuelni feedback korisniku. Koriste kombinaciju 
+                    <code>transform</code>, <code>box-shadow</code>, <code>background</code> tranzicija 
+                    i <code>::before</code>/<code>::after</code> pseudo-elemenata za kreiranje naprednih efekata.
+                </p>
+                <div class="demo-grid button-demos">
+                    <button class="demo-btn btn-ripple">
+                        <span>Ripple Efekat</span>
+                    </button>
+                    <button class="demo-btn btn-shine">
+                        <span>Shine Efekat</span>
+                    </button>
+                    <button class="demo-btn btn-fill">
+                        <span>Fill Efekat</span>
+                    </button>
+                    <button class="demo-btn btn-outline-anim">
+                        <span>Outline Animacija</span>
+                    </button>
+                    <button class="demo-btn btn-gradient-shift">
+                        <span>Gradient Shift</span>
+                    </button>
+                    <button class="demo-btn btn-magnetic" data-magnetic>
+                        <span>Magnetni Efekat</span>
+                    </button>
+                </div>
+                <div class="demo-explanation">
+                    <p>
+                        <strong>Ripple:</strong> JavaScript detektuje klik koordinate i kreira kružnu animaciju koristeći CSS radial-gradient. 
+                        <strong>Shine:</strong> Pseudo-element sa linear-gradient se pomjera preko dugmeta koristeći @keyframes. 
+                        <strong>Fill:</strong> Pozadina se animira od dna prema vrhu koristeći ::before element sa scaleY tranzicijom.
+                        <strong>Gradient Shift:</strong> Background-position se animira na hover za efekat pomicanja gradijenta.
+                    </p>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Loading Animacije</h3>
+                <p class="demo-description">
+                    Loading indikatori koriste <code>@keyframes</code> animacije za beskonačno ponavljanje 
+                    (<code>animation-iteration-count: infinite</code>). Koriste se za vizuelni feedback 
+                    dok korisnik čeka učitavanje sadržaja. Ove animacije trebaju biti lagane i ne smiju 
+                    opterećivati CPU/GPU.
+                </p>
+                <div class="demo-grid loading-demos">
+                    <div class="loading-item">
+                        <div class="spinner spinner-ring"></div>
+                        <span>Ring Spinner</span>
+                        <code>border + border-top-color + @keyframes spin { transform: rotate(360deg) }</code>
+                    </div>
+                    <div class="loading-item">
+                        <div class="spinner spinner-dots">
+                            <div></div><div></div><div></div>
+                        </div>
+                        <span>Bouncing Dots</span>
+                        <code>@keyframes bounce sa animation-delay za svaki dot element</code>
+                    </div>
+                    <div class="loading-item">
+                        <div class="spinner spinner-pulse"></div>
+                        <span>Pulse</span>
+                        <code>@keyframes pulse { scale(0) → scale(1) + opacity: 0 }</code>
+                    </div>
+                    <div class="loading-item">
+                        <div class="spinner spinner-bars">
+                            <div></div><div></div><div></div><div></div><div></div>
+                        </div>
+                        <span>Wave Bars</span>
+                        <code>scaleY animacija sa staggered animation-delay</code>
+                    </div>
+                    <div class="loading-item">
+                        <div class="spinner spinner-orbit">
+                            <div class="orbit-dot"></div>
+                        </div>
+                        <span>Orbit</span>
+                        <code>@keyframes orbit — rotacija tačke oko centra 360°</code>
+                    </div>
+                    <div class="loading-item">
+                        <div class="spinner spinner-gradient"></div>
+                        <span>Gradient Spin</span>
+                        <code>conic-gradient + @keyframes rotate + border-radius: 50%</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">CSS Tranzicije</h3>
+                <p class="demo-description">
+                    Tranzicije definišu kako se promjene CSS svojstava odvijaju tokom vremena. Ključna svojstva 
+                    su: <code>transition-property</code> (šta se animira), <code>transition-duration</code> 
+                    (koliko traje), <code>transition-timing-function</code> (brzinska kriva) i 
+                    <code>transition-delay</code> (odgoda).
+                </p>
+                <div class="transition-demos">
+                    <div class="timing-demo">
+                        <h4>Timing funkcije</h4>
+                        <p>Svaka linija ispod koristi različitu timing funkciju. Pritisnite dugme da vidite razliku.</p>
+                        <button class="demo-btn btn-primary" id="triggerTiming">Pokreni Tranzicije</button>
+                        <div class="timing-tracks">
+                            <div class="timing-track">
+                                <span class="timing-label">linear</span>
+                                <div class="timing-bar"><div class="timing-ball" data-timing="linear"></div></div>
+                            </div>
+                            <div class="timing-track">
+                                <span class="timing-label">ease</span>
+                                <div class="timing-bar"><div class="timing-ball" data-timing="ease"></div></div>
+                            </div>
+                            <div class="timing-track">
+                                <span class="timing-label">ease-in</span>
+                                <div class="timing-bar"><div class="timing-ball" data-timing="ease-in"></div></div>
+                            </div>
+                            <div class="timing-track">
+                                <span class="timing-label">ease-out</span>
+                                <div class="timing-bar"><div class="timing-ball" data-timing="ease-out"></div></div>
+                            </div>
+                            <div class="timing-track">
+                                <span class="timing-label">ease-in-out</span>
+                                <div class="timing-bar"><div class="timing-ball" data-timing="ease-in-out"></div></div>
+                            </div>
+                            <div class="timing-track">
+                                <span class="timing-label">cubic-bezier</span>
+                                <div class="timing-bar"><div class="timing-ball" data-timing="cubic-bezier(0.68, -0.55, 0.27, 1.55)"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="gsap-animations">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">02</span>
+                <h2 class="section-title">JavaScript / <span class="gradient-text">GSAP</span></h2>
+                <p class="section-description">
+                    GSAP (GreenSock Animation Platform) je najmoćnija JavaScript biblioteka za web animacije. 
+                    Pruža preciznu kontrolu nad timing-om, easing funkcijama i sekvenciranjem animacija. 
+                    GSAP koristi requestAnimationFrame i optimizira performanse automatski. Podržava animaciju 
+                    bilo kojeg numeričkog CSS svojstva, SVG atributa, pa čak i custom objekata.
+                </p>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Pomjeranje Elemenata</h3>
+                <p class="demo-description">
+                    GSAP metode <code>gsap.to()</code>, <code>gsap.from()</code> i <code>gsap.fromTo()</code> 
+                    omogućavaju precizno pomjeranje elemenata. Svojstva poput <code>x</code>, <code>y</code>, 
+                    <code>rotation</code>, <code>scale</code> se animiraju kroz transformer, što je GPU-ubrzano.
+                </p>
+                <div class="gsap-playground">
+                    <div class="playground-controls">
+                        <button class="demo-btn btn-primary" id="gsapPlay">▶ Play</button>
+                        <button class="demo-btn btn-secondary" id="gsapReverse">◀ Reverse</button>
+                        <button class="demo-btn btn-secondary" id="gsapReset">↺ Reset</button>
+                    </div>
+                    <div class="playground-stage" id="gsapStage">
+                        <div class="gsap-box box-1">gsap.to()</div>
+                        <div class="gsap-box box-2">gsap.from()</div>
+                        <div class="gsap-box box-3">gsap.fromTo()</div>
+                    </div>
+                    <div class="demo-explanation">
+                        <p>
+                            <strong>gsap.to():</strong> Animira element OD trenutnog stanja DO zadatih vrijednosti. 
+                            <strong>gsap.from():</strong> Animira element OD zadatih vrijednosti DO trenutnog stanja. 
+                            <strong>gsap.fromTo():</strong> Definiše i početno i krajnje stanje animacije.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Timeline Animacije</h3>
+                <p class="demo-description">
+                    <code>gsap.timeline()</code> omogućava sekvenciranje više animacija u jednu kontrolabilnu 
+                    cjelinu. Svaka animacija u timeline-u se automatski nadovezuje na prethodnu, ali se može 
+                    i preklapati koristeći position parametre poput <code>"&lt;0.5"</code> ili <code>"-=0.3"</code>.
+                </p>
+                <div class="timeline-demo">
+                    <div class="timeline-controls">
+                        <button class="demo-btn btn-primary" id="tlPlay">▶ Play Timeline</button>
+                        <button class="demo-btn btn-secondary" id="tlReverse">◀ Reverse</button>
+                        <button class="demo-btn btn-secondary" id="tlPause">⏸ Pause</button>
+                        <button class="demo-btn btn-secondary" id="tlReset">↺ Reset</button>
+                    </div>
+                    <div class="timeline-progress">
+                        <div class="progress-bar" id="tlProgress"></div>
+                    </div>
+                    <div class="timeline-stage" id="timelineStage">
+                        <div class="tl-element tl-circle"></div>
+                        <div class="tl-element tl-square"></div>
+                        <div class="tl-element tl-triangle"></div>
+                        <div class="tl-element tl-diamond"></div>
+                    </div>
+                    <div class="timeline-code">
+                        <pre><code>const tl = gsap.timeline({ paused: true });
+
+tl.from(".circle", { scale: 0, duration: 0.5 })
+  .from(".square", { x: -100, opacity: 0, duration: 0.5 }, "-=0.2")
+  .from(".triangle", { y: 50, rotation: -180, duration: 0.6 }, "-=0.3")
+  .from(".diamond", { scale: 0, rotation: 360, duration: 0.5 })
+  .to(".circle, .square", { y: -30, stagger: 0.1, duration: 0.4 });</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Stagger Animacije</h3>
+                <p class="demo-description">
+                    Stagger parametar u GSAP-u omogućava kaskadno pokretanje animacije za grupu elemenata 
+                    sa zadanim vremenskim razmakom. Ovo stvara efekat "talasa" koji je vizuelno vrlo privlačan. 
+                    Podržava i napredne konfiguracije poput <code>stagger: { each: 0.1, from: "center" }</code>.
+                </p>
+                <div class="stagger-demo">
+                    <button class="demo-btn btn-primary" id="staggerPlay">Pokreni Stagger</button>
+                    <div class="stagger-grid" id="staggerGrid">
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div><div class="stagger-item"></div>
+                        <div class="stagger-item"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Kompleksni Efekti</h3>
+                <p class="demo-description">
+                    GSAP omogućava kreiranje kompleksnih animacija kombinovanjem više tehnika: 
+                    morphing oblika, animacija teksta po slovima, 3D transformacije i dinamičke 
+                    interakcije sa korisnikom.
+                </p>
+                <div class="complex-demos">
+                    <div class="complex-card">
+                        <h4>Animacija Teksta</h4>
+                        <p class="split-text" id="splitTextDemo">Svako slovo se animira zasebno koristeći GSAP SplitText koncept.</p>
+                        <button class="demo-btn btn-primary btn-sm" id="splitTextBtn">Animiraj Tekst</button>
+                    </div>
+                    <div class="complex-card">
+                        <h4>3D Card Flip</h4>
+                        <div class="flip-card" id="flipCard">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    <span>Prednja Strana</span>
+                                    <p>Klikni za flip</p>
+                                </div>
+                                <div class="flip-card-back">
+                                    <span>Zadnja Strana</span>
+                                    <p>GSAP rotateY(180deg)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="complex-card">
+                        <h4>Morphing Oblik</h4>
+                        <div class="morph-container" id="morphContainer">
+                            <div class="morph-shape" id="morphShape"></div>
+                        </div>
+                        <button class="demo-btn btn-primary btn-sm" id="morphBtn">Morph</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="svg-animations">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">03</span>
+                <h2 class="section-title">SVG <span class="gradient-text">Animacije</span></h2>
+                <p class="section-description">
+                    SVG (Scalable Vector Graphics) animacije omogućavaju animiranje vektorske grafike direktno u browseru. 
+                    SVG elementi se mogu animirati putem CSS-a, SMIL-a ili JavaScripta. Posebno su korisni za 
+                    line-drawing efekte (<code>stroke-dasharray</code> / <code>stroke-dashoffset</code>), 
+                    animirane ikone i ilustracije koje se prilagođavaju svim rezolucijama.
+                </p>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Line Drawing Efekat</h3>
+                <p class="demo-description">
+                    Tehnika "line drawing" koristi SVG <code>stroke-dasharray</code> i <code>stroke-dashoffset</code> 
+                    svojstva. Postavljanjem dasharray na ukupnu dužinu putanje i animiranjem dashoffset-a od te dužine 
+                    do nule, stvara se efekat crtanja linije.
+                </p>
+                <div class="svg-demo-grid">
+                    <div class="svg-draw-item">
+                        <svg viewBox="0 0 200 200" class="svg-draw" id="svgDraw1">
+                            <circle cx="100" cy="100" r="80" fill="none" stroke="url(#grad1)" stroke-width="3" class="draw-path"/>
+                            <defs><linearGradient id="grad1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#06b6d4"/></linearGradient></defs>
+                        </svg>
+                        <span>Krug</span>
+                    </div>
+                    <div class="svg-draw-item">
+                        <svg viewBox="0 0 200 200" class="svg-draw" id="svgDraw2">
+                            <rect x="30" y="30" width="140" height="140" rx="10" fill="none" stroke="url(#grad2)" stroke-width="3" class="draw-path"/>
+                            <defs><linearGradient id="grad2"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#ef4444"/></linearGradient></defs>
+                        </svg>
+                        <span>Pravougaonik</span>
+                    </div>
+                    <div class="svg-draw-item">
+                        <svg viewBox="0 0 200 200" class="svg-draw" id="svgDraw3">
+                            <polygon points="100,20 180,180 20,180" fill="none" stroke="url(#grad3)" stroke-width="3" class="draw-path"/>
+                            <defs><linearGradient id="grad3"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient></defs>
+                        </svg>
+                        <span>Trougao</span>
+                    </div>
+                    <div class="svg-draw-item">
+                        <svg viewBox="0 0 200 200" class="svg-draw" id="svgDraw4">
+                            <path d="M100,20 L140,80 L180,80 L150,120 L165,180 L100,150 L35,180 L50,120 L20,80 L60,80 Z" fill="none" stroke="url(#grad4)" stroke-width="3" class="draw-path"/>
+                            <defs><linearGradient id="grad4"><stop offset="0%" stop-color="#ec4899"/><stop offset="100%" stop-color="#8b5cf6"/></linearGradient></defs>
+                        </svg>
+                        <span>Zvijezda</span>
+                    </div>
+                </div>
+                <button class="demo-btn btn-primary" id="svgDrawBtn" style="margin-top:1.5rem;">Pokreni Line Drawing</button>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Animirane SVG Ikone</h3>
+                <p class="demo-description">
+                    SVG ikone se mogu animirati na hover ili na klik koristeći CSS tranzicije i 
+                    transformacije primijenjene na pojedinačne <code>&lt;path&gt;</code> elemente unutar SVG-a. 
+                    Ovo daje živost korisničkom interfejsu.
+                </p>
+                <div class="svg-icons-grid">
+                    <div class="svg-icon-item">
+                        <svg viewBox="0 0 64 64" class="animated-icon icon-check">
+                            <circle cx="32" cy="32" r="28" fill="none" stroke="currentColor" stroke-width="2.5" class="icon-circle"/>
+                            <polyline points="20,32 28,40 44,24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="icon-path"/>
+                        </svg>
+                        <span>Check</span>
+                    </div>
+                    <div class="svg-icon-item">
+                        <svg viewBox="0 0 64 64" class="animated-icon icon-heart">
+                            <path d="M32,52 C20,42 10,32 10,22 C10,14 16,8 24,8 C28,8 31,10 32,12 C33,10 36,8 40,8 C48,8 54,14 54,22 C54,32 44,42 32,52Z" fill="none" stroke="currentColor" stroke-width="2.5" class="icon-path"/>
+                        </svg>
+                        <span>Heart</span>
+                    </div>
+                    <div class="svg-icon-item">
+                        <svg viewBox="0 0 64 64" class="animated-icon icon-star">
+                            <polygon points="32,8 38,24 56,24 42,36 47,52 32,42 17,52 22,36 8,24 26,24" fill="none" stroke="currentColor" stroke-width="2.5" class="icon-path"/>
+                        </svg>
+                        <span>Star</span>
+                    </div>
+                    <div class="svg-icon-item">
+                        <svg viewBox="0 0 64 64" class="animated-icon icon-gear">
+                            <circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                            <path d="M32,2 L35,10 L43,6 L41,14 L50,14 L45,20 L52,26 L44,26 L50,34 L42,32 L46,40 L38,36 L38,46 L34,40 L32,48 L30,40 L26,46 L26,36 L18,40 L22,32 L14,34 L20,26 L12,26 L19,20 L14,14 L23,14 L21,6 L29,10Z" fill="none" stroke="currentColor" stroke-width="2" class="icon-path gear-path"/>
+                        </svg>
+                        <span>Gear</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="scroll-effects">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">04</span>
+                <h2 class="section-title">Scroll <span class="gradient-text">Efekti</span></h2>
+                <p class="section-description">
+                    Scroll-bazirane animacije se aktiviraju na osnovu pozicije skrolovanja stranice. 
+                    GSAP ScrollTrigger plugin omogućava preciznu kontrolu — definisanje tačnog trenutka 
+                    kada animacija počinje i završava, "pinning" elemenata, parallax efekte i 
+                    "scrub" animacije koje su direktno vezane za poziciju skrola.
+                </p>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Reveal Animacije na Skrolovanje</h3>
+                <p class="demo-description">
+                    Elementi se pojavljuju sa različitim animacijama dok korisnik skroluje stranicu. 
+                    ScrollTrigger definiše "<code>trigger</code>" element i "<code>start</code>" poziciju 
+                    (npr. "top 80%" znači da animacija počinje kada vrh elementa dostigne 80% visine viewporta).
+                </p>
+                <div class="reveal-grid">
+                    <div class="reveal-card reveal-fade-up">
+                        <div class="reveal-icon">🎨</div>
+                        <h4>Fade Up</h4>
+                        <p>Element se pojavljuje pomjerajući se prema gore sa opacity tranzicijom. Najčešći reveal efekat.</p>
+                        <code>gsap.from(el, { y: 60, opacity: 0, scrollTrigger: { trigger: el, start: "top 80%" } })</code>
+                    </div>
+                    <div class="reveal-card reveal-fade-left">
+                        <div class="reveal-icon">🚀</div>
+                        <h4>Slide from Left</h4>
+                        <p>Element klizi s lijeve strane u svoj položaj. Koristi x translaciju sa ScrollTrigger-om.</p>
+                        <code>gsap.from(el, { x: -100, opacity: 0 })</code>
+                    </div>
+                    <div class="reveal-card reveal-fade-right">
+                        <div class="reveal-icon">⚡</div>
+                        <h4>Slide from Right</h4>
+                        <p>Element klizi s desne strane. Simetričan efekat koji se koristi za alternating layouts.</p>
+                        <code>gsap.from(el, { x: 100, opacity: 0 })</code>
+                    </div>
+                    <div class="reveal-card reveal-scale">
+                        <div class="reveal-icon">💎</div>
+                        <h4>Scale In</h4>
+                        <p>Element se pojavljuje rastom od nule do pune veličine. Dramatičan efekat za ključne elemente.</p>
+                        <code>gsap.from(el, { scale: 0, opacity: 0 })</code>
+                    </div>
+                    <div class="reveal-card reveal-rotate">
+                        <div class="reveal-icon">🔄</div>
+                        <h4>Rotate In</h4>
+                        <p>Element se rotira dok se pojavljuje. Kombinuje rotaciju i opacity za dinamičan ulaz.</p>
+                        <code>gsap.from(el, { rotation: -15, opacity: 0 })</code>
+                    </div>
+                    <div class="reveal-card reveal-flip">
+                        <div class="reveal-icon">✨</div>
+                        <h4>Flip In</h4>
+                        <p>3D flip efekat koristeći rotateX. Stvara utisak da se element okreće kao kartica.</p>
+                        <code>gsap.from(el, { rotateX: -90, opacity: 0 })</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Parallax Efekat</h3>
+                <p class="demo-description">
+                    Parallax efekat stvara iluziju dubine tako što se različiti slojevi stranice pomjeraju 
+                    različitim brzinama pri skrolovanju. Prednji slojevi se pomjeraju brže od pozadinskih, 
+                    što stvara trodimenzionalni utisak. Implementira se putem ScrollTrigger <code>scrub</code> parametra.
+                </p>
+                <div class="parallax-demo">
+                    <div class="parallax-layer parallax-bg" data-speed="0.2">
+                        <div class="parallax-shape shape-1"></div>
+                        <div class="parallax-shape shape-2"></div>
+                        <div class="parallax-shape shape-3"></div>
+                    </div>
+                    <div class="parallax-layer parallax-mid" data-speed="0.5">
+                        <div class="parallax-shape shape-4"></div>
+                        <div class="parallax-shape shape-5"></div>
+                    </div>
+                    <div class="parallax-layer parallax-fg" data-speed="0.8">
+                        <div class="parallax-text">Parallax Dubina</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Horizontalno Skrolovanje</h3>
+                <p class="demo-description">
+                    ScrollTrigger omogućava pretvaranje vertikalnog skrolovanja u horizontalno pomjeranje sadržaja. 
+                    Ovo se postiže "pin"-ovanjem kontejnera i animiranjem <code>x</code> pozicije unutrašnjeg 
+                    sadržaja sa <code>scrub: true</code>.
+                </p>
+                <div class="horizontal-scroll-wrapper" id="horizontalWrapper">
+                    <div class="horizontal-scroll-container" id="horizontalContainer">
+                        <div class="h-scroll-panel panel-1">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop" alt="Web razvoj" class="panel-image">
+                            <h3>Web Razvoj</h3>
+                            <p>Vertikalni skrol se pretvara u horizontalno kretanje koristeći ScrollTrigger pin i scrub parametre.</p>
+                        </div>
+                        <div class="h-scroll-panel panel-2">
+                            <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&h=400&fit=crop" alt="Animacije" class="panel-image">
+                            <h3>Animacije</h3>
+                            <p>Sadržaj klizi s desna na lijevo dok korisnik skroluje vertikalno, stvarajući dinamičan doživljaj.</p>
+                        </div>
+                        <div class="h-scroll-panel panel-3">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Kod" class="panel-image">
+                            <h3>Čist Kod</h3>
+                            <p>Svaki panel zauzima punu širinu viewporta za imerzivno iskustvo prezentacije sadržaja.</p>
+                        </div>
+                        <div class="h-scroll-panel panel-4">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Performanse" class="panel-image">
+                            <h3>Performanse</h3>
+                            <p>scrub: true vezuje poziciju animacije direktno za poziciju skrola za glatke prijelaze.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Progress Bar na Skrolovanju</h3>
+                <p class="demo-description">
+                    Animiranje napretka na osnovu pozicije skrolovanja. <code>scrub: true</code> vezuje animaciju 
+                    direktno za skrol poziciju — pomjeranje prema dolje pokreće animaciju naprijed, 
+                    a vraćanje nazad pokreće animaciju unazad.
+                </p>
+                <div class="scroll-progress-demo">
+                    <div class="progress-item">
+                        <span class="progress-label">HTML & CSS</span>
+                        <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">JavaScript</span>
+                        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">GSAP</span>
+                        <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">CSS Animacije</span>
+                        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <span class="progress-label">SVG Animacije</span>
+                        <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="micro-interactions">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">05</span>
+                <h2 class="section-title">Mikro-<span class="gradient-text">interakcije</span></h2>
+                <p class="section-description">
+                    Mikro-interakcije su mali, suptilni animirani odgovori na korisničke akcije. 
+                    One poboljšavaju korisničko iskustvo (UX) pružajući trenutni vizuelni feedback, 
+                    usmjeravajući pažnju korisnika i čineći interfejs "živim". Primjeri uključuju 
+                    toggle prekidače, like dugmad, tooltipove i notifikacije.
+                </p>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Interaktivni UI Elementi</h3>
+                <p class="demo-description">
+                    Svaki od sljedećih elemenata demonstrira specifičnu mikro-interakciju. 
+                    Kliknite ili interagujte sa svakim elementom da vidite animaciju na djelu.
+                </p>
+                <div class="micro-grid">
+                    <div class="micro-item">
+                        <h4>Toggle Switch</h4>
+                        <p>CSS tranzicija za glatki prijelaz sa efektom "bounce".</p>
+                        <label class="toggle-switch">
+                            <input type="checkbox">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <div class="micro-item">
+                        <h4>Like Dugme</h4>
+                        <p>Animacija srca sa particle efektom na klik.</p>
+                        <button class="like-button" id="likeBtn">
+                            <svg viewBox="0 0 24 24" class="heart-icon">
+                                <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.28 2,8.5C2,5.42 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.09C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.42 22,8.5C22,12.28 18.6,15.36 13.45,20.03L12,21.35Z"/>
+                            </svg>
+                            <span class="like-particles"></span>
+                        </button>
+                    </div>
+
+                    <div class="micro-item">
+                        <h4>Notifikacija</h4>
+                        <p>Zvono se trese i pojavljuje se badge sa brojem.</p>
+                        <button class="notification-bell" id="notifBtn">
+                            <svg viewBox="0 0 24 24" class="bell-icon">
+                                <path d="M12,22c1.1,0 2,-0.9 2,-2h-4c0,1.1 0.9,2 2,2zm6,-6v-5c0,-3.07 -1.63,-5.64 -4.5,-6.32V4c0,-0.83 -0.67,-1.5 -1.5,-1.5S10.5,3.17 10.5,4v0.68C7.64,5.36 6,7.92 6,11v5l-2,2v1h16v-1l-2,-2z" fill="currentColor"/>
+                            </svg>
+                            <span class="notif-badge" id="notifBadge">0</span>
+                        </button>
+                    </div>
+
+                    <div class="micro-item">
+                        <h4>Animated Checkbox</h4>
+                        <p>SVG checkmark sa line-drawing animacijom.</p>
+                        <label class="custom-checkbox">
+                            <input type="checkbox">
+                            <span class="checkbox-mark">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="4,12 10,18 20,6" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <span>Označi me</span>
+                        </label>
+                    </div>
+
+                    <div class="micro-item">
+                        <h4>Tooltip</h4>
+                        <p>Animirani tooltip sa scale i opacity tranzicijom.</p>
+                        <div class="tooltip-demo">
+                            <button class="demo-btn btn-primary btn-sm tooltip-trigger" data-tooltip="Ovo je animirani tooltip sa CSS tranzicijom!">
+                                Pređi mišem
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="micro-item">
+                        <h4>Hamburger → X</h4>
+                        <p>Transformacija hamburgera u X ikonu putem CSS transform.</p>
+                        <button class="hamburger-demo" id="hamburgerDemo">
+                            <span></span><span></span><span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Interaktivne Kartice</h3>
+                <p class="demo-description">
+                    Kartice sa 3D tilt efektom koji prati pokret miša. Koristi JavaScript za izračunavanje 
+                    pozicije kursora relativno prema kartici i primjenjuje <code>perspective</code> i 
+                    <code>rotateX/rotateY</code> transformacije za 3D efekat.
+                </p>
+                <div class="tilt-cards">
+                    <div class="tilt-card" data-tilt>
+                        <div class="tilt-card-content">
+                            <div class="tilt-glow"></div>
+                            <img src="images/placeholder-1.jpg" alt="Placeholder slika 1" class="tilt-card-image" onerror="this.style.display='none'">
+                            <div class="tilt-card-placeholder">📐</div>
+                            <h4>Perspektiva</h4>
+                            <p>CSS perspective: 1000px omogućava 3D prostor za rotacije elemenata.</p>
+                        </div>
+                    </div>
+                    <div class="tilt-card" data-tilt>
+                        <div class="tilt-card-content">
+                            <div class="tilt-glow"></div>
+                            <img src="images/placeholder-2.jpg" alt="Placeholder slika 2" class="tilt-card-image" onerror="this.style.display='none'">
+                            <div class="tilt-card-placeholder">🎭</div>
+                            <h4>Transform Origin</h4>
+                            <p>Tačka oko koje se element rotira može se precizno kontrolisati.</p>
+                        </div>
+                    </div>
+                    <div class="tilt-card" data-tilt>
+                        <div class="tilt-card-content">
+                            <div class="tilt-glow"></div>
+                            <img src="images/placeholder-3.jpg" alt="Placeholder slika 3" class="tilt-card-image" onerror="this.style.display='none'">
+                            <div class="tilt-card-placeholder">💡</div>
+                            <h4>Glow Praćenje</h4>
+                            <p>Radijalni gradijent prati poziciju miša za dinamičan svjetlosni efekat.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="performance">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">06</span>
+                <h2 class="section-title">Performanse <span class="gradient-text">Demo</span></h2>
+                <p class="section-description">
+                    Performanse animacija su ključne za glatko korisničko iskustvo. Animacije koje koriste 
+                    svojstva poput <code>transform</code> i <code>opacity</code> se izvršavaju na GPU-u 
+                    (compositor thread) i ne uzrokuju layout ili paint operacije. Nasuprot tome, animiranje 
+                    <code>width</code>, <code>height</code>, <code>top</code>, <code>left</code> i sličnih 
+                    svojstava uzrokuje skupe layout preračunavanja (reflow).
+                </p>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Loša vs Dobra Animacija</h3>
+                <p class="demo-description">
+                    Uporedni prikaz dviju animacija sa identičnim vizuelnim rezultatom, ali drastično 
+                    različitim performansama. Lijeva strana koristi <em>loša</em> svojstva (left, top, width, height), 
+                    dok desna koristi <em>dobra</em> svojstva (transform, opacity).
+                </p>
+                <div class="perf-comparison">
+                    <div class="perf-side perf-bad">
+                        <div class="perf-label bad-label">❌ Loša Animacija</div>
+                        <div class="perf-stage">
+                            <div class="perf-box bad-box" id="badBox">Loše</div>
+                        </div>
+                        <div class="perf-info">
+                            <h4>Koristi: left, top, width, height</h4>
+                            <ul>
+                                <li>Pokreće <strong>Layout</strong> preračunavanje</li>
+                                <li>Pokreće <strong>Paint</strong> ponovno iscrtavanje</li>
+                                <li>Zauzima <strong>Main Thread</strong></li>
+                                <li>Uzrokuje <strong>jank</strong> (trzanje)</li>
+                                <li>Nije GPU-ubrzano</li>
+                            </ul>
+                            <div class="perf-pipeline">
+                                <span class="pipe-step active">JS</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Style</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Layout</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Paint</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active">Composite</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perf-divider">VS</div>
+                    <div class="perf-side perf-good">
+                        <div class="perf-label good-label">✅ Dobra Animacija</div>
+                        <div class="perf-stage">
+                            <div class="perf-box good-box" id="goodBox">Dobro</div>
+                        </div>
+                        <div class="perf-info">
+                            <h4>Koristi: transform, opacity</h4>
+                            <ul>
+                                <li>Preskače Layout fazu</li>
+                                <li>Preskače Paint fazu</li>
+                                <li>Radi na <strong>Compositor Thread</strong></li>
+                                <li>Glatka animacija pri <strong>60 FPS</strong></li>
+                                <li><strong>GPU-ubrzano</strong> renderovanje</li>
+                            </ul>
+                            <div class="perf-pipeline">
+                                <span class="pipe-step active">JS</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step">Style</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Layout</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Paint</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active good">Composite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="demo-btn btn-primary" id="perfCompare" style="margin-top:2rem;">
+                    Pokreni Obje Animacije
+                </button>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Box-Shadow vs Filter: Animacija Sjenke</h3>
+                <p class="demo-description">
+                    Animiranje <code>box-shadow</code> je skupo jer pokreće Paint fazu za svaki frame. 
+                    Alternativa je korištenje <code>pseudo-elementa</code> sa statičnom sjenkom i animiranje 
+                    njegovog <code>opacity</code> — čime se sjenka prikazuje/sakriva bez ponovnog iscrtavanja.
+                </p>
+                <div class="perf-comparison">
+                    <div class="perf-side perf-bad">
+                        <div class="perf-label bad-label">❌ Animirani box-shadow</div>
+                        <div class="perf-stage">
+                            <div class="perf-box bad-box shadow-bad-box" id="shadowBadBox">Loše</div>
+                        </div>
+                        <div class="perf-info">
+                            <h4>Animira: box-shadow</h4>
+                            <ul>
+                                <li>Svaki frame pokreće <strong>Paint</strong></li>
+                                <li>Sjenka se preračunava za svaki pixel</li>
+                                <li>CPU-intenzivna operacija</li>
+                                <li>Vidljiv pad FPS-a na mobilnim uređajima</li>
+                            </ul>
+                            <div class="perf-pipeline">
+                                <span class="pipe-step active">JS</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Style</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Layout</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Paint</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active">Composite</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perf-divider">VS</div>
+                    <div class="perf-side perf-good">
+                        <div class="perf-label good-label">✅ Opacity pseudo-element</div>
+                        <div class="perf-stage">
+                            <div class="perf-box good-box shadow-good-box" id="shadowGoodBox">Dobro</div>
+                        </div>
+                        <div class="perf-info">
+                            <h4>Animira: opacity na ::after</h4>
+                            <ul>
+                                <li>Sjenka se crta <strong>jednom</strong></li>
+                                <li>Samo opacity se mijenja (Composite)</li>
+                                <li><strong>GPU-ubrzano</strong> — nema Paint faze</li>
+                                <li>Konstantnih <strong>60 FPS</strong></li>
+                            </ul>
+                            <div class="perf-pipeline">
+                                <span class="pipe-step active">JS</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step">Style</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Layout</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Paint</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active good">Composite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="demo-btn btn-primary" id="shadowCompare" style="margin-top:2rem;">
+                    Pokreni Poređenje Sjenki
+                </button>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Animacija Boja: background-color vs Overlay</h3>
+                <p class="demo-description">
+                    Animiranje <code>background-color</code> pokreće Paint fazu. Bolji pristup je korištenje 
+                    preklapajućeg elementa sa <code>opacity</code> tranzicijom i fiksnom bojom — browser samo 
+                    mijenja prozirnost na GPU-u bez ponovnog iscrtavanja piksela.
+                </p>
+                <div class="perf-comparison">
+                    <div class="perf-side perf-bad">
+                        <div class="perf-label bad-label">❌ Animirani background-color</div>
+                        <div class="perf-stage">
+                            <div class="perf-box bad-box color-bad-box" id="colorBadBox">Loše</div>
+                        </div>
+                        <div class="perf-info">
+                            <h4>Animira: background-color</h4>
+                            <ul>
+                                <li>Pokreće <strong>Paint</strong> za svaki frame</li>
+                                <li>Browser izračunava interpolaciju boja</li>
+                                <li>Nemoguće GPU-ubrzati</li>
+                                <li>Posebno skupo na velikim elementima</li>
+                            </ul>
+                            <div class="perf-pipeline">
+                                <span class="pipe-step active">JS</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Style</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Layout</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Paint</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active">Composite</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perf-divider">VS</div>
+                    <div class="perf-side perf-good">
+                        <div class="perf-label good-label">✅ Opacity overlay</div>
+                        <div class="perf-stage">
+                            <div class="perf-box good-box color-good-box" id="colorGoodBox">Dobro</div>
+                        </div>
+                        <div class="perf-info">
+                            <h4>Animira: opacity na overlay sloju</h4>
+                            <ul>
+                                <li>Boja se postavlja <strong>jednom</strong></li>
+                                <li>Samo opacity se animira</li>
+                                <li>Radi na <strong>Compositor Thread</strong></li>
+                                <li>Vizuelno identičan rezultat</li>
+                            </ul>
+                            <div class="perf-pipeline">
+                                <span class="pipe-step active">JS</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step">Style</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Layout</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Paint</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active good">Composite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="demo-btn btn-primary" id="colorCompare" style="margin-top:2rem;">
+                    Pokreni Poređenje Boja
+                </button>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Broj Elemenata: Mnogo vs Malo (sa Scale)</h3>
+                <p class="demo-description">
+                    Animiranje velikog broja DOM elemenata individualno je izuzetno skupo. Efikasniji pristup 
+                    je korištenje manje elemenata sa CSS <code>transform: scale()</code> ili Canvas/WebGL 
+                    za masovno renderovanje. Razlika u performansama može biti drastična.
+                </p>
+                <div class="perf-comparison">
+                    <div class="perf-side perf-bad">
+                        <div class="perf-label bad-label">❌ 200 individ. DOM elemenata</div>
+                        <div class="perf-stage" id="manyBadStage">
+                            <div class="perf-box bad-box">200×</div>
+                        </div>
+                        <div class="perf-info">
+                            <h4>200 elemenata × individualna animacija</h4>
+                            <ul>
+                                <li><strong>200 requestAnimationFrame</strong> kalkulacija</li>
+                                <li>Svaki element čita i piše u DOM</li>
+                                <li>Masivni <strong>Layout Thrashing</strong></li>
+                                <li>FPS pada ispod <strong>20</strong></li>
+                            </ul>
+                            <div class="perf-pipeline">
+                                <span class="pipe-step active bad">JS ×200</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Style</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Layout</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active bad">Paint</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active">Composite</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="perf-divider">VS</div>
+                    <div class="perf-side perf-good">
+                        <div class="perf-label good-label">✅ GSAP Batch + Transform</div>
+                        <div class="perf-stage" id="manyGoodStage">
+                            <div class="perf-box good-box">Batch</div>
+                        </div>
+                        <div class="perf-info">
+                            <h4>GSAP batchira sve u 1 rAF ciklus</h4>
+                            <ul>
+                                <li><strong>1 requestAnimationFrame</strong> poziv</li>
+                                <li>GSAP interno optimizira čitanja/pisanja</li>
+                                <li>Koristi <strong>transform</strong> — nema Layout</li>
+                                <li>Stabilnih <strong>60 FPS</strong></li>
+                            </ul>
+                            <div class="perf-pipeline">
+                                <span class="pipe-step active good">JS ×1</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step">Style</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Layout</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step skip">Paint</span>
+                                <span class="pipe-arrow">→</span>
+                                <span class="pipe-step active good">Composite</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="demo-btn btn-primary" id="manyCompare" style="margin-top:2rem;">
+                    Pokreni Poređenje Elemenata
+                </button>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">Optimizacijski Savjeti</h3>
+                <p class="demo-description">
+                    Ključni principi za performantne web animacije koji osiguravaju glatko korisničko iskustvo.
+                </p>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-number">01</div>
+                        <h4>Koristi transform & opacity</h4>
+                        <p>Ova dva CSS svojstva su jedina koja se mogu animirati bez pokretanja Layout i Paint faza 
+                           rendering pipeline-a. Browser ih obrađuje na GPU-u (compositor thread), što omogućava 
+                           60 FPS animacije.</p>
+                        <code>/* Dobro ✅ */<br>transform: translateX(100px);<br><br>/* Loše ❌ */<br>left: 100px;</code>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">02</div>
+                        <h4>will-change Svojstvo</h4>
+                        <p><code>will-change</code> informiše browser unaprijed koja svojstva će se mijenjati, 
+                           omogućavajući mu da izvrši optimizacije. Ali se ne smije pretjerivati — previše 
+                           will-change deklaracija može zapravo pogoršati performanse.</p>
+                        <code>/* Koristi samo kad je potrebno */<br>will-change: transform, opacity;<br><br>/* Ukloni nakon animacije */<br>will-change: auto;</code>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">03</div>
+                        <h4>requestAnimationFrame</h4>
+                        <p>Za JavaScript animacije uvijek koristi <code>requestAnimationFrame</code> umjesto 
+                           <code>setTimeout</code> ili <code>setInterval</code>. rAF sinhronizuje animacije 
+                           sa refresh rate-om ekrana i pauzira kad tab nije aktivan.</p>
+                        <code>function animate() {<br>&nbsp;&nbsp;// animacija logika<br>&nbsp;&nbsp;requestAnimationFrame(animate);<br>}</code>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">04</div>
+                        <h4>Izbjegavaj Layout Thrashing</h4>
+                        <p>Čitanje i pisanje DOM svojstava naizmjenično uzrokuje "layout thrashing" — 
+                           browser mora konstantno preračunavati layout. Grupiši čitanja i pisanja zasebno.</p>
+                        <code>/* Loše - layout thrashing ❌ */<br>el.style.width = el.offsetWidth + 10 + 'px';<br><br>/* Dobro - batchovano ✅ */<br>const w = el.offsetWidth;<br>el.style.width = w + 10 + 'px';</code>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">05</div>
+                        <h4>Reduce, Reuse, Recycle</h4>
+                        <p>Minimiziraj broj animiranih elemenata. Koristi CSS containment 
+                           (<code>contain: layout</code>) da ograničiš područje koje browser mora preračunati. 
+                           Recikliraj animacije umjesto da kreiraš nove.</p>
+                        <code>/* CSS Containment */<br>.animated-section {<br>&nbsp;&nbsp;contain: layout style paint;<br>}</code>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-number">06</div>
+                        <h4>prefers-reduced-motion</h4>
+                        <p>Poštuj korisnikove postavke pristupačnosti. Medijski upit 
+                           <code>prefers-reduced-motion</code> detektuje da li je korisnik zatražio 
+                           smanjeno kretanje u sistemskim postavkama.</p>
+                        <code>@media (prefers-reduced-motion: reduce) {<br>&nbsp;&nbsp;* { animation-duration: 0.01ms !important; }<br>}</code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-block">
+                <h3 class="demo-title">FPS Monitor</h3>
+                <p class="demo-description">
+                    Demonstracija razlike u FPS-u (frames per second) između optimizirane i neoptimizovane animacije. 
+                    Zelena zona (50-60 FPS) označava glatku animaciju, žuta (30-50 FPS) je prihvatljiva, 
+                    a crvena (ispod 30 FPS) ukazuje na probleme sa performansama.
+                </p>
+                <div class="fps-demo">
+                    <div class="fps-display">
+                        <canvas id="fpsCanvas" width="300" height="150"></canvas>
+                        <div class="fps-counter" id="fpsCounter">60 FPS</div>
+                    </div>
+                    <div class="fps-controls">
+                        <button class="demo-btn btn-primary" id="fpsGood">Optimizirana Animacija</button>
+                        <button class="demo-btn btn-secondary" id="fpsBad">Stresna Animacija</button>
+                        <button class="demo-btn btn-secondary" id="fpsStop">Zaustavi</button>
+                    </div>
+                    <div class="fps-boxes" id="fpsBoxes"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-gradient"></div>
+            <div class="footer-inner">
+                <h2 class="footer-title">Interactive Animation <span class="gradient-text">Showcase</span></h2>
+                <p class="footer-text">
+                    Diplomski rad — Istraživanje i praktična demonstracija savremenih tehnika 
+                    web animacija koristeći CSS, JavaScript i GSAP biblioteku.
+                </p>
+                <div class="footer-tech">
+                    <span class="tech-badge">HTML5</span>
+                    <span class="tech-badge">CSS3</span>
+                    <span class="tech-badge">JavaScript</span>
+                    <span class="tech-badge">GSAP</span>
+                    <span class="tech-badge">ScrollTrigger</span>
+                    <span class="tech-badge">SVG</span>
+                </div>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">&copy; 2026 — Diplomski Rad</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/particles.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/hero.js"></script>
+    <script src="js/css-demos.js"></script>
+    <script src="js/gsap-demos.js"></script>
+    <script src="js/svg.js"></script>
+    <script src="js/scroll.js"></script>
+    <script src="js/micro.js"></script>
+    <script src="js/performance.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

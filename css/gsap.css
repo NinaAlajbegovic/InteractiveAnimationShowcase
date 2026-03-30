@@ -1,0 +1,265 @@
+.gsap-playground {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+}
+
+.playground-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.playground-stage {
+    min-height: 200px;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 2rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.gsap-box {
+    width: 120px;
+    height: 120px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: white;
+}
+
+.box-1 { background: linear-gradient(135deg, var(--purple), var(--blue)); }
+.box-2 { background: linear-gradient(135deg, var(--cyan), var(--emerald)); }
+.box-3 { background: linear-gradient(135deg, var(--rose), var(--amber)); }
+
+.timeline-demo {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem;
+}
+
+.timeline-controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.timeline-progress {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--gradient-1);
+    border-radius: 2px;
+    transition: width 0.05s linear;
+}
+
+.timeline-stage {
+    min-height: 180px;
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.tl-element {
+    width: 60px;
+    height: 60px;
+}
+
+.tl-circle {
+    background: var(--purple);
+    border-radius: 50%;
+}
+
+.tl-square {
+    background: var(--cyan);
+    border-radius: 12px;
+}
+
+.tl-triangle {
+    width: 0;
+    height: 0;
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 60px solid var(--emerald);
+}
+
+.tl-diamond {
+    background: var(--rose);
+    border-radius: 8px;
+    transform: rotate(45deg);
+    width: 45px;
+    height: 45px;
+}
+
+.timeline-code {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 1.5rem;
+    overflow-x: auto;
+}
+
+.timeline-code pre {
+    margin: 0;
+}
+
+.timeline-code code {
+    background: transparent;
+    color: var(--cyan);
+    padding: 0;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    white-space: pre;
+}
+
+.stagger-demo {
+    text-align: center;
+}
+
+.stagger-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    max-width: 500px;
+    margin: 2rem auto 0;
+}
+
+.stagger-item {
+    aspect-ratio: 1;
+    background: var(--gradient-1);
+    border-radius: 12px;
+    opacity: 0.3;
+    transform: scale(0.5);
+}
+
+.complex-demos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.complex-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.complex-card h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.split-text {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    min-height: 60px;
+    line-height: 1.7;
+}
+
+.split-char {
+    display: inline-block;
+    opacity: 0;
+}
+
+.flip-card {
+    width: 200px;
+    height: 140px;
+    margin: 0 auto 1rem;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background: linear-gradient(135deg, var(--purple), var(--blue));
+}
+
+.flip-card-front span,
+.flip-card-back span {
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.flip-card-front p,
+.flip-card-back p {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+.flip-card-back {
+    background: linear-gradient(135deg, var(--rose), var(--amber));
+    transform: rotateY(180deg);
+}
+
+.morph-container {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.morph-shape {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-1);
+    border-radius: 50%;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.morph-shape.morphed {
+    border-radius: 15%;
+    transform: rotate(45deg) scale(1.2);
+    background: var(--gradient-2);
+}

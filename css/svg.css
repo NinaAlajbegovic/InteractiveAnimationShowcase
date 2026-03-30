@@ -1,0 +1,111 @@
+.svg-demo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.svg-draw-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.svg-draw-item span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.svg-draw {
+    width: 140px;
+    height: 140px;
+}
+
+.draw-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 2s ease;
+}
+
+.draw-path.drawn {
+    stroke-dashoffset: 0;
+}
+
+.svg-icons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.svg-icon-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.svg-icon-item:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+}
+
+.svg-icon-item span {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.animated-icon {
+    width: 56px;
+    height: 56px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.animated-icon .icon-path,
+.animated-icon .icon-circle {
+    stroke-width: 2.5;
+}
+
+.svg-icon-item:hover .animated-icon {
+    color: var(--purple);
+    transform: scale(1.15);
+}
+
+.svg-icon-item:hover .icon-heart .icon-path {
+    fill: var(--rose);
+    stroke: var(--rose);
+}
+
+.svg-icon-item:hover .icon-star .icon-path {
+    fill: var(--amber);
+    stroke: var(--amber);
+}
+
+.svg-icon-item:hover .icon-check .icon-circle {
+    stroke: var(--emerald);
+}
+.svg-icon-item:hover .icon-check .icon-path {
+    stroke: var(--emerald);
+}
+
+.svg-icon-item:hover .icon-gear {
+    animation: gearSpin 2s linear infinite;
+}
+
+@keyframes gearSpin {
+    to { transform: rotate(360deg) scale(1.15); }
+}
+
+.icon-path {
+    transition: all 0.3s ease;
+}
