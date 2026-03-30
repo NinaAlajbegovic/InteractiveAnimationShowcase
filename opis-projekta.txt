@@ -1,0 +1,443 @@
+================================================================================
+INTERACTIVE ANIMATION SHOWCASE — DETALJAN OPIS PROJEKTA
+Diplomski Rad — Interaktivne Web Animacije
+================================================================================
+
+1. UVOD I SVRHA PROJEKTA
+================================================================================
+
+Ovaj projekat predstavlja web aplikaciju koja služi kao praktična demonstracija
+savremenih tehnika web animacija. Cilj je da se na jednom mjestu prikažu različiti
+pristupi animiranju web sadržaja — od čistih CSS animacija, preko JavaScript
+biblioteka poput GSAP-a (GreenSock Animation Platform), pa do SVG animacija i
+optimizacije performansi.
+
+Stranica je dizajnirana u modernom "dark mode" stilu sa gradijentnim efektima,
+inspirisana savremenim web dizajn trendovima (glassmorphism, gradienti, glatki
+prijelazi). Svaka sekcija ne samo da demonstrira animacije, već sadrži i
+objašnjenja kako su implementirane, koji CSS/JS koncepti se koriste, i zašto
+su određeni pristupi bolji od drugih.
+
+
+2. STRUKTURA PROJEKTA
+================================================================================
+
+ninaDipl/
+├── index.html          — Glavna HTML datoteka sa svim sekcijama
+├── css/
+│   └── styles.css      — Kompletni stilovi (2300+ linija CSS koda)
+├── js/
+│   └── main.js         — JavaScript logika i GSAP animacije (1200+ linija)
+├── images/             — Direktorij za slike (placeholder-i u HTML-u)
+├── opis-projekta.txt   — Ovaj fajl — detaljan opis projekta
+└── uputstvo.txt        — Uputstvo za lokalno pokretanje
+
+
+3. KORIŠTENE TEHNOLOGIJE
+================================================================================
+
+3.1 HTML5
+- Semantički HTML elementi (nav, section, footer, article)
+- Canvas API za particle sistem
+- SVG za vektorske animacije i ikone
+- Data atributi za konfiguraciju (data-tilt, data-target, data-speed, itd.)
+
+3.2 CSS3
+- CSS Custom Properties (CSS varijable) za centralizovanu temu
+- @keyframes animacije za beskonačne efekte (loading spinneri, orbitali)
+- CSS Transitions za hover efekte i glatke prijelaze
+- Transform funkcije (translate, scale, rotate, perspective)
+- Flexbox i CSS Grid za responzivan layout
+- backdrop-filter za glassmorphism efekte
+- clip-path i border-radius za oblikovanje elemenata
+- Pseudo-elementi (::before, ::after) za dekorativne efekte
+- Media queries za responzivan dizajn
+- prefers-reduced-motion za pristupačnost
+- CSS Containment za optimizaciju renderovanja
+
+3.3 JavaScript (ES6+)
+- ES6 klase, arrow funkcije, template literali
+- DOM manipulacija i Event handling
+- Intersection Observer API za lazy aktivaciju
+- Canvas 2D API za particle sistem i FPS monitor
+- requestAnimationFrame za performantne animacije
+- Performance API za mjerenje FPS-a
+
+3.4 GSAP (GreenSock Animation Platform) v3.12
+- gsap.to(), gsap.from(), gsap.fromTo() — osnovne metode
+- gsap.timeline() — sekvenciranje animacija
+- ScrollTrigger plugin — scroll-bazirane animacije
+- Stagger animacije — kaskadni efekti
+- Easing funkcije (power2, back, elastic, bounce)
+- scrub parametar za scroll-vezane animacije
+- Pin funkcionalnost za horizontalno skrolovanje
+
+
+4. DETALJNI OPIS SEKCIJA
+================================================================================
+
+4.1 NAVIGACIJA (Navbar)
+—————————————————————————————————————
+- Fiksna navigacija na vrhu stranice
+- Transparentna pozadina koja na skrolovanje dobija blur efekat (backdrop-filter)
+- Aktivni link se ažurira automatski na osnovu pozicije skrolovanja
+- Responsive hamburger meni za mobilne uređaje
+- Glatko skrolovanje do ciljne sekcije (smooth scroll)
+
+Tehnike: CSS transitions, backdrop-filter, Intersection Observer koncept,
+scroll event listener, classList toggle
+
+
+4.2 HERO SEKCIJA (Landing Page)
+—————————————————————————————————————
+Ovo je prva stvar koju korisnik vidi. Sadrži:
+
+a) Animated Background:
+   - Tri gradient "orb" elementa koji lebde pomoću CSS @keyframes animacije
+   - Canvas particle sistem koji crta čestice i linije između bliskih čestica
+   - Particle sistem se automatski pauzira kad hero nije vidljiv (optimizacija)
+
+b) Animirani Tekst:
+   - Badge element (GSAP fade-in)
+   - Naslov "Interactive Animation Showcase" — svaka linija se pojavljuje
+     sa GSAP timeline-om (translateY + opacity)
+   - Opis i CTA dugmadi se pojavljuju u sekvenci
+
+c) Statistika:
+   - Brojevi se animiraju od 0 do ciljne vrijednosti (counter animacija)
+   - Koristi gsap.to() sa snap parametrom za cjelobrojne vrijednosti
+
+Hero sekcija koristi padding-top koji uzima u obzir visinu navigacije kako se
+sadržaj ne bi preklapao sa navbar-om.
+
+Tehnike: GSAP Timeline, CSS @keyframes, Canvas 2D API, IntersectionObserver
+
+
+4.3 CSS ANIMATIONS SEKCIJA
+—————————————————————————————————————
+
+a) Hover Efekti (6 kartica):
+   - Lift: translateY(-10px) + box-shadow za efekat lebdenja
+   - Scale: scale(1.05) za uvećanje
+   - Glow: box-shadow sa neon bojom za efekat sijanja — solidna pozadina,
+     bez transparencije, jasno vidljiva kartica
+   - Rotate: rotate(2deg) za suptilnu rotaciju — solidna pozadina,
+     zelenkast hover efekat za vizuelni kontrast
+   - Border: Gradient border koristeći ::before pseudo-element
+   - Blur: backdrop-filter za glassmorphism efekat
+   
+   Svaka kartica sadrži objašnjenje i CSS kod koji se koristi.
+
+b) Button Animacije (6 dugmadi):
+   - Ripple: JavaScript kreira kružnu animaciju na poziciji klika
+   - Shine: ::before pseudo-element sa linear-gradient se pomjera na hover
+   - Fill: ::before element sa scaleY animacijom od dna prema vrhu
+   - Outline: ::before i ::after elementi sa width/height tranzicijama za
+     animirano pojavljivanje okvira
+   - Gradient Shift: background-position animacija @keyframes
+   - Magnetic: JavaScript prati poziciju miša i pomjera dugme ka kursoru
+     koristeći GSAP sa elastic easing-om za povratak
+
+c) Loading Animacije (6 loadera):
+   - Ring Spinner: border-top-color + @keyframes rotate
+   - Bouncing Dots: @keyframes scale sa staggered animation-delay
+   - Pulse: @keyframes scale(0→1) + opacity(1→0)
+   - Wave Bars: scaleY animacija sa kaskadnim kašnjenjem
+   - Orbit: Rotacija tačke oko kružnice
+   - Gradient Spin: conic-gradient + rotation
+
+d) CSS Tranzicije — Timing Funkcije:
+   - Interaktivni demo koji prikazuje razliku između timing funkcija:
+     linear, ease, ease-in, ease-out, ease-in-out, cubic-bezier
+   - Loptice se pomijeraju po trakama sa različitim timing funkcijama
+   - Dugme toggleuje poziciju loptica
+
+Tehnike: CSS :hover, ::before/::after, @keyframes, transition-timing-function,
+cubic-bezier, CSS variables
+
+
+4.4 JAVASCRIPT / GSAP ANIMACIJE
+—————————————————————————————————————
+
+a) Pomjeranje Elemenata (Playground):
+   - Tri kutije demonstriraju gsap.to(), gsap.from(), gsap.fromTo()
+   - Play/Reverse/Reset kontrole
+   - gsap.to(): animira OD trenutnog stanja DO zadatih vrijednosti
+   - gsap.from(): animira OD zadatih vrijednosti DO trenutnog stanja
+   - gsap.fromTo(): definiše i početno i krajnje stanje
+
+b) Timeline Animacije:
+   - Sekvenca animacija na 4 geometrijska oblika (krug, kvadrat, trougao, romb)
+   - Progress bar koji prati napredak timeline-a
+   - Kontrole: Play, Reverse, Pause, Reset
+   - Demonstrira position parametre ("-=0.2", "-=0.3")
+   - Prikazan GSAP kod u code bloku
+
+c) Stagger Animacije:
+   - Mreža od 25 elemenata (5x5 grid)
+   - Stagger from: "center" za efekat širenja od centra
+   - Stagger from: "edges" za efekat skupljanja od rubova
+   - Demonstrira grid-aware stagger sa each i from parametrima
+
+d) Kompleksni Efekti:
+   - Split Text: Tekst se razbija na pojedinačna slova, svako se animira
+     sa GSAP stagger-om (opacity, y, rotateX)
+   - 3D Card Flip: CSS perspective + rotateY(180deg) za flip efekat
+     sa backface-visibility: hidden
+   - Morphing Oblik: CSS border-radius + rotation tranzicija za pretvaranje
+     kruga u zaobljeni romb sa promjenom gradijenta
+
+Tehnike: gsap.to/from/fromTo, gsap.timeline, stagger, position parameters,
+ease funkcije (back, elastic, bounce, power2)
+
+
+4.5 SVG ANIMACIJE
+—————————————————————————————————————
+
+a) Line Drawing Efekat:
+   - 4 SVG oblika (krug, pravougaonik, trougao, zvijezda)
+   - Koristi stroke-dasharray i stroke-dashoffset za efekat "crtanja"
+   - getTotalLength() za dinamičko izračunavanje dužine putanje
+   - GSAP animira dashoffset od pune dužine do 0
+   - Svaki oblik ima gradient stroke (linearGradient SVG element)
+
+b) Animirane SVG Ikone:
+   - 4 ikone (check, heart, star, gear)
+   - Sve ikone imaju pojačanu vidljivost (stroke-width: 2.5, boja: text-primary)
+   - CSS hover efekti: fill promjena, scale, rotacija
+   - Gear ikona ima poboljšan SVG path za jasnu vidljivost
+   - Ikone se pojavljuju sa GSAP stagger animacijom na skrolovanje
+
+Tehnike: SVG stroke-dasharray/dashoffset, getTotalLength(), CSS transitions
+na SVG elementima, GSAP animacija SVG atributa
+
+
+4.6 SCROLL EFEKTI
+—————————————————————————————————————
+
+a) Reveal Animacije:
+   - 6 kartica sa različitim scroll-trigger animacijama:
+     Fade Up, Slide Left, Slide Right, Scale In, Rotate In, Flip In
+   - Svaka koristi ScrollTrigger sa start: "top 85%"
+   - Jednokratno okidanje (once: true)
+
+b) Parallax Efekat:
+   - 3 sloja sa različitim brzinama (data-speed: 0.2, 0.5, 0.8)
+   - ScrollTrigger scrub za vezivanje animacije za skrol poziciju
+   - Geometrijski oblici sa pojačanom vidljivošću (opacity: 0.45-0.55)
+   - Oblici imaju box-shadow glow efekte za bolju uočljivost
+   - Povećan raspon kretanja (y: -150*speed) sa dodatnim x pomjeranjem
+   - Tekst "Parallax Dubina" se skalira i pomjera na skrol
+   - Visina demo područja povećana na 500px za jači efekat
+
+c) Horizontalno Skrolovanje:
+   - 4 panela sa slikama učitanim sa Unsplash CDN-a (web razvoj, animacije, kod, performanse)
+   - Svaki panel ima sliku (600×400), naslov i opis
+   - ScrollTrigger pin za fiksiranje kontejnera
+   - Paneli koriste flex-shrink: 0 i width: 80vw za pravilno dimenzioniranje
+   - Vertikalni skrol se pretvara u horizontalno pomjeranje
+   - scrub: 1 za glatku vezu sa skrol pozicijom
+   - onRefresh callback za pravilno rekalkulisanje širine pri resize-u
+
+d) Progress Barovi:
+   - 5 skill barova sa različitim širinama
+   - Animiraju se od 0% do ciljne širine na scroll trigger
+   - GSAP width animacija sa power2.out easing-om
+
+Tehnike: ScrollTrigger (trigger, start, end, scrub, pin, once),
+parallax slojevi, horizontalni scroll pin
+
+
+4.7 MIKRO-INTERAKCIJE
+—————————————————————————————————————
+
+a) Toggle Switch:
+   - CSS-only animirani prekidač
+   - cubic-bezier(0.68, -0.55, 0.27, 1.55) za bounce efekat
+   - Krug se pomjera translateX(26px) na checked stanje
+
+b) Like Dugme:
+   - SVG srce sa fill/stroke tranzicijom
+   - @keyframes heartBeat za pulsiranje na klik
+   - JavaScript kreira 12 konfeti čestica koje se šire radijalno
+   - GSAP animira čestice (x, y, opacity, scale)
+
+c) Notifikacijsko Zvono:
+   - @keyframes bellRing za tresenje zvona
+   - Badge sa brojem koji se pojavljuje sa scale tranzicijom
+   - cubic-bezier za bounce efekat pri pojavljivanju badge-a
+
+d) Animirani Checkbox:
+   - Custom checkbox sa SVG checkmark line-drawing animacijom
+   - stroke-dasharray + stroke-dashoffset za crtanje kvačice
+   - Scale + opacity tranzicija na checked
+
+e) Tooltip:
+   - CSS-only tooltip koristeći ::before i ::after pseudo-elemente
+   - data-tooltip atribut za sadržaj
+   - Scale + opacity tranzicija za pojavljivanje
+
+f) Hamburger → X:
+   - 3 linije koje se transformišu u X
+   - CSS transform: rotate(45deg) translate() za gornju i donju liniju
+   - Srednja linija: scaleX(0) + opacity: 0
+
+g) 3D Tilt Kartice:
+   - JavaScript prati poziciju miša nad karticom
+   - Izračunava rotateX i rotateY na osnovu pozicije kursora
+   - CSS perspective: 1000px za 3D prostor
+   - Radijalni gradijent koji prati kursor (glow efekat)
+   - GSAP elastic easing za povratak u neutralnu poziciju
+
+Tehnike: CSS pseudo-klase, CSS pseudo-elementi, JavaScript event handling,
+GSAP mikro-animacije, CSS perspective + transform3d
+
+
+4.8 PERFORMANSE DEMO
+—————————————————————————————————————
+
+a) Loša vs Dobra Animacija (Pozicioniranje):
+   - Vizuelni prikaz rendering pipeline-a (JS → Style → Layout → Paint → Composite)
+   - "Loša" animacija koristi left, top, width, height — pokreće Layout i Paint
+   - "Dobra" animacija koristi transform i opacity — ide direktno na Composite
+   - Interaktivni demo: oba pristupa rade istu animaciju simultano
+   - JavaScript animira "bad" box sa style.left (namjerno loše)
+   - GSAP animira "good" box sa transform (optimizirano)
+
+b) Box-Shadow vs Opacity Pseudo-Element:
+   - Animiranje box-shadow pokreće Paint fazu svaki frame
+   - Alternativa: ::after pseudo-element sa fiksnom sjenkom i animiranim opacity
+   - Demo: loša strana animira box-shadow intenzitet direktno
+   - Dobra strana koristi CSS custom property (--shadow-opacity) za ::after opacity
+   - Rezultat: identičan vizuelni efekat bez Paint troška
+
+c) Background-Color vs Overlay Opacity:
+   - Animiranje background-color pokreće Paint (interpolacija boja svaki frame)
+   - Alternativa: overlay div/pseudo sa fiksnom bojom i animiranim opacity
+   - Demo: loša strana prolazi kroz 5 boja animirajući background direktno
+   - Dobra strana koristi ::after sa gradient overlay-om i opacity animacijom
+   - Browser samo mijenja prozirnost na GPU-u
+
+d) Mnogo DOM Elemenata vs GSAP Batch:
+   - Animiranje 200 elemenata individualno sa layout svojstvima: 200 kalkulacija po frame-u
+   - GSAP batchira sve u 1 requestAnimationFrame ciklus sa transform svojstvima
+   - Demo: 80 tačaka animiranih oba načina simultano
+   - Loša strana: čita offsetWidth pa piše marginLeft/Top za svaki element (Layout Thrashing)
+   - Dobra strana: GSAP stagger sa transform-om — nema Layout faze
+
+e) Optimizacijski Savjeti (6 kartica):
+   1. Transform & Opacity — jedina dva svojstva bez Layout/Paint troška
+   2. will-change — informiše browser unaprijed, ali ne pretjerivati
+   3. requestAnimationFrame — sinhronizacija sa refresh rate-om ekrana
+   4. Layout Thrashing — grupisanje DOM čitanja i pisanja
+   5. CSS Containment — ograničavanje područja preračunavanja
+   6. prefers-reduced-motion — poštivanje korisnikovih postavki pristupačnosti
+
+f) FPS Monitor:
+   - Canvas-bazirani grafikon koji prikazuje FPS u realnom vremenu
+   - performance.now() za precizno mjerenje vremena između framova
+   - Zelena (50-60 FPS), žuta (30-50 FPS), crvena (<30 FPS) zona
+   - "Optimizirana" animacija: GSAP sa transform (50 elemenata)
+   - "Stresna" animacija: direktna DOM manipulacija layout svojstava (200 elemenata)
+   - Demonstrira razliku u performansama između pristupa
+
+Tehnike: Performance API, Canvas 2D za vizualizaciju, Layout Thrashing
+demonstracija, requestAnimationFrame, CSS will-change
+
+
+5. DODATNE FUNKCIONALNOSTI
+================================================================================
+
+5.1 Reading Progress Bar
+- Fiksna traka na vrhu stranice koja prikazuje napredak čitanja
+- Širina se izračunava kao procenat skrolovanog sadržaja
+- Gradient pozadina za vizuelnu privlačnost
+
+5.2 Smooth Scrolling
+- Svi anchor linkovi koriste smooth scrolling
+- Automatski oduzima visinu navigacije od ciljne pozicije
+
+5.3 Responsive Design
+- Potpuno responzivan dizajn za mobilne uređaje
+- CSS Grid auto-fill za automatsko prilagođavanje kolona
+- Media queries za 768px i 480px breakpointe
+- Hamburger meni za mobilnu navigaciju
+- Touch-friendly veličine interaktivnih elemenata
+
+5.4 Pristupačnost (Accessibility)
+- prefers-reduced-motion media query za korisnike koji preferiraju smanjeno kretanje
+- :focus-visible stilovi za navigaciju tastaturom
+- ARIA labele na interaktivnim elementima
+- Semantički HTML elementi
+- Alt tekstovi na slikama (placeholderima)
+
+5.5 Performansne Optimizacije
+- Particle sistem se pauzira kad hero sekcija nije vidljiva
+- once: true na ScrollTrigger-ima za jednokratno okidanje
+- GPU-ubrzane animacije (transform, opacity)
+- Efikasno korištenje requestAnimationFrame
+- Custom scrollbar stiliziran sa CSS-om
+
+
+6. DIZAJN PRINCIPI
+================================================================================
+
+6.1 Vizuelni Stil
+- Dark mode sa #0a0a0f primarnom pozadinom
+- Gradient palette: ljubičasta (#8b5cf6), cijan (#06b6d4), smaragdna (#10b981)
+- Glassmorphism efekti sa backdrop-filter: blur()
+- Suptilne border linije sa rgba transparencijom
+- CSS Custom Properties za konzistentnu temu
+
+6.2 Tipografija
+- Font: Inter (Google Fonts) — moderan sans-serif font
+- Varijabilne težine: 300-900
+- Negativni letter-spacing za naslove (-0.04em)
+- clamp() za responzivne veličine fonta
+
+6.3 Animacijski Principi
+- Sve animacije koriste ease-out ili cubic-bezier za prirodan osjećaj
+- Trajanje animacija: 0.3-0.8s za interakcije, 1-2s za demonstrate
+- Stagger efekti za sekvencijalno pojavljivanje grupa elemenata
+- Bounce i elastic easing za igrive efekte
+
+
+7. EKSTERNE ZAVISNOSTI
+================================================================================
+
+- GSAP 3.12.5 — Učitava se sa cdnjs.cloudflare.com CDN-a
+- ScrollTrigger 3.12.5 — GSAP plugin, također sa CDN-a
+- Inter Font — Google Fonts CDN
+- Unsplash Images — Slike za horizontalni skrol panele (images.unsplash.com)
+
+Sve zavisnosti se učitavaju sa CDN-a, tako da je potrebna internet konekcija
+za prvo učitavanje. Nakon toga, browser kešira fajlove.
+
+
+8. ZAKLJUČAK
+================================================================================
+
+Ovaj projekat demonstrira širok spektar tehnika web animacija na praktičan i
+interaktivan način. Svaka sekcija je dizajnirana da ne samo prikaže animaciju,
+već i objasni koncept iza nje, čime služi kao edukativni resurs.
+
+Ključne lekcije koje projekat prenosi:
+
+1. CSS animacije su dovoljne za većinu hover efekata, tranzicija i loading
+   indikatora — ne treba uvijek posezati za JavaScriptom.
+
+2. GSAP je nezamjenjiv za kompleksne, sekvencirane animacije i scroll-bazirane
+   efekte koji zahtijevaju preciznu kontrolu.
+
+3. SVG animacije pružaju skalabilne, resolution-independent efekte
+   koji se lako animiraju.
+
+4. Performanse su ključne — korištenje transform i opacity umjesto layout
+   svojstava može značiti razliku između 20 FPS i 60 FPS.
+
+5. Pristupačnost i responzivnost nisu opcioni — svaka animacija treba
+   poštovati korisnikove preferencije i raditi na svim uređajima.
+
+================================================================================
+Projekt kreiran za potrebe diplomskog rada, 2026.
+================================================================================
