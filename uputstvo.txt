@@ -1,0 +1,40 @@
+================================================================================
+UPUTSTVO ZA POKRETANJE — Interactive Animation Showcase
+================================================================================
+
+PREDUVJETI:
+- Moderan web browser (Chrome, Firefox, Edge, Safari)
+- Internet konekcija (za učitavanje GSAP biblioteke i fontova sa CDN-a)
+
+KORACI:
+
+1. Raspakirajte/kopirajte folder "ninaDipl" na svoje računar.
+
+2. Provjerite da struktura foldera izgleda ovako:
+   
+   ninaDipl/
+   ├── index.html
+   ├── css/
+   │   └── styles.css
+   ├── js/
+   │   └── main.js
+   ├── images/
+   ├── opis-projekta.txt
+   └── uputstvo.txt
+
+3. Otvorite fajl "index.html" u web browseru:
+   - Dvostruki klik na index.html
+   - ILI desni klik → "Open with" → izaberite browser
+   - ILI u browseru: File → Open File → navigirajte do index.html
+
+4. Stranica se otvara lokalno i sve animacije rade automatski.
+   Skrolujte prema dolje da vidite sve sekcije i interakcije.
+
+NAPOMENE:
+- Potrebna je internet konekcija za učitavanje GSAP-a i Google Fonts-a.
+- Za najbolji doživljaj, koristite Chrome ili Firefox.
+- Ako koristite VS Code, možete instalirati "Live Server" ekstenziju
+  i kliknuti "Go Live" za automatski reload pri promjenama.
+- Svi fajlovi su statički — nema potrebe za serverom, bazom, ni instalacijom.
+
+================================================================================
