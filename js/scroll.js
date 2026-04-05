@@ -6,6 +6,7 @@ function initScrollRevealAnimations() {
             duration: 0.8,
             stagger: 0.15,
             ease: 'power3.out',
+            immediateRender: false,
             scrollTrigger: {
                 trigger: header,
                 start: 'top 85%',
@@ -20,6 +21,7 @@ function initScrollRevealAnimations() {
             opacity: 0,
             duration: 0.8,
             ease: 'power3.out',
+            immediateRender: false,
             scrollTrigger: {
                 trigger: block,
                 start: 'top 85%',
@@ -31,7 +33,7 @@ function initScrollRevealAnimations() {
     const revealCards = document.querySelectorAll('.reveal-card');
     revealCards.forEach(card => {
         const classList = card.classList;
-        let fromVars = { opacity: 0, duration: 0.8, ease: 'power3.out' };
+        let fromVars = { opacity: 0, duration: 0.8, ease: 'power3.out', immediateRender: false };
 
         if (classList.contains('reveal-fade-up')) fromVars.y = 60;
         else if (classList.contains('reveal-fade-left')) fromVars.x = -100;
@@ -134,20 +136,20 @@ function initHorizontalScroll() {
     const container = document.getElementById('horizontalContainer');
     if (!wrapper || !container) return;
 
-    const getScrollAmount = () => -(container.scrollWidth - wrapper.offsetWidth);
+    const panels = container.querySelectorAll('.h-scroll-panel');
+    if (!panels.length) return;
 
+    // Travel distance = total panels width minus one viewport
+    // end matches travel distance so scroll maps 1:1 to animation
     gsap.to(container, {
-        x: getScrollAmount,
+        x: () => -(container.scrollWidth - wrapper.clientWidth),
         ease: 'none',
         scrollTrigger: {
             trigger: wrapper,
-            start: 'top 15%',
-            end: () => '+=' + Math.abs(getScrollAmount()),
-            scrub: 1,
             pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true,
-            onRefresh: self => self.animation.vars.x = getScrollAmount()
+            scrub: 1,
+            end: () => '+=' + (container.scrollWidth - wrapper.clientWidth),
+            invalidateOnRefresh: true
         }
     });
 }

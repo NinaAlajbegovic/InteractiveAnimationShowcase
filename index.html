@@ -512,8 +512,8 @@ tl.from(".circle", { scale: 0, duration: 0.5 })
                     </div>
                     <div class="svg-icon-item">
                         <svg viewBox="0 0 64 64" class="animated-icon icon-gear">
-                            <circle cx="32" cy="32" r="8" fill="none" stroke="currentColor" stroke-width="2.5"/>
-                            <path d="M32,2 L35,10 L43,6 L41,14 L50,14 L45,20 L52,26 L44,26 L50,34 L42,32 L46,40 L38,36 L38,46 L34,40 L32,48 L30,40 L26,46 L26,36 L18,40 L22,32 L14,34 L20,26 L12,26 L19,20 L14,14 L23,14 L21,6 L29,10Z" fill="none" stroke="currentColor" stroke-width="2" class="icon-path gear-path"/>
+                            <circle cx="32" cy="32" r="10" fill="none" stroke="currentColor" stroke-width="2.5" class="icon-circle"/>
+                            <path d="M32 4L35 14L45 10L42 20L52 20L46 28L56 32L46 36L52 44L42 44L45 54L35 50L32 60L29 50L19 54L22 44L12 44L18 36L8 32L18 28L12 20L22 20L19 10L29 14Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" class="icon-path gear-path"/>
                         </svg>
                         <span>Gear</span>
                     </div>
@@ -612,32 +612,35 @@ tl.from(".circle", { scale: 0, duration: 0.5 })
                     Ovo se postiže "pin"-ovanjem kontejnera i animiranjem <code>x</code> pozicije unutrašnjeg 
                     sadržaja sa <code>scrub: true</code>.
                 </p>
-                <div class="horizontal-scroll-wrapper" id="horizontalWrapper">
-                    <div class="horizontal-scroll-container" id="horizontalContainer">
-                        <div class="h-scroll-panel panel-1">
-                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop" alt="Web razvoj" class="panel-image">
-                            <h3>Web Razvoj</h3>
-                            <p>Vertikalni skrol se pretvara u horizontalno kretanje koristeći ScrollTrigger pin i scrub parametre.</p>
-                        </div>
-                        <div class="h-scroll-panel panel-2">
-                            <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=600&h=400&fit=crop" alt="Animacije" class="panel-image">
-                            <h3>Animacije</h3>
-                            <p>Sadržaj klizi s desna na lijevo dok korisnik skroluje vertikalno, stvarajući dinamičan doživljaj.</p>
-                        </div>
-                        <div class="h-scroll-panel panel-3">
-                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Kod" class="panel-image">
-                            <h3>Čist Kod</h3>
-                            <p>Svaki panel zauzima punu širinu viewporta za imerzivno iskustvo prezentacije sadržaja.</p>
-                        </div>
-                        <div class="h-scroll-panel panel-4">
-                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Performanse" class="panel-image">
-                            <h3>Performanse</h3>
-                            <p>scrub: true vezuje poziciju animacije direktno za poziciju skrola za glatke prijelaze.</p>
-                        </div>
-                    </div>
+            </div>
+        </div><!-- /.section-container -->
+
+        <div class="horizontal-scroll-wrapper" id="horizontalWrapper">
+            <div class="horizontal-scroll-container" id="horizontalContainer">
+                <div class="h-scroll-panel panel-1">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=900&h=600&fit=crop" alt="Web razvoj" class="panel-image">
+                    <h3>Web Razvoj</h3>
+                    <p>Vertikalni skrol se pretvara u horizontalno kretanje koristeći ScrollTrigger pin i scrub parametre.</p>
+                </div>
+                <div class="h-scroll-panel panel-2">
+                    <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?w=900&h=600&fit=crop" alt="Animacije" class="panel-image">
+                    <h3>Animacije</h3>
+                    <p>Sadržaj klizi s desna na lijevo dok korisnik skroluje vertikalno, stvarajući dinamičan doživljaj.</p>
+                </div>
+                <div class="h-scroll-panel panel-3">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900&h=600&fit=crop" alt="Kod" class="panel-image">
+                    <h3>Čist Kod</h3>
+                    <p>Svaki panel zauzima punu širinu viewporta za imerzivno iskustvo prezentacije sadržaja.</p>
+                </div>
+                <div class="h-scroll-panel panel-4">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=600&fit=crop" alt="Performanse" class="panel-image">
+                    <h3>Performanse</h3>
+                    <p>scrub: true vezuje poziciju animacije direktno za poziciju skrola za glatke prijelaze.</p>
                 </div>
             </div>
+        </div>
 
+        <div class="section-container">
             <div class="demo-block">
                 <h3 class="demo-title">Progress Bar na Skrolovanju</h3>
                 <p class="demo-description">
@@ -1183,6 +1186,45 @@ tl.from(".circle", { scale: 0, duration: 0.5 })
     </footer>
 
     <div class="reading-progress" id="readingProgress"></div>
+
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <div class="ab-toggle-panel" id="abTogglePanel">
+        <button class="ab-toggle-btn" id="abToggleBtn" aria-label="Postavke animacija">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+        </button>
+        <div class="ab-settings" id="abSettings">
+            <h4>Postavke Animacija</h4>
+            <p class="ab-desc">Prebacujte između verzija za A/B testiranje animacija.</p>
+            <div class="ab-option">
+                <label class="ab-radio">
+                    <input type="radio" name="animVersion" value="B" checked>
+                    <span class="ab-radio-mark"></span>
+                    <span class="ab-radio-label">
+                        <strong>Verzija B — Bogate animacije</strong>
+                        <small>Spring/bounce efekti, glatko klizanje, ease-out krive (200-350ms)</small>
+                    </span>
+                </label>
+            </div>
+            <div class="ab-option">
+                <label class="ab-radio">
+                    <input type="radio" name="animVersion" value="A">
+                    <span class="ab-radio-mark"></span>
+                    <span class="ab-radio-label">
+                        <strong>Verzija A — Kontrolna (bez animacija)</strong>
+                        <small>Linearne, instant promjene. Bez easing-a, bez kašnjenja.</small>
+                    </span>
+                </label>
+            </div>
+            <div class="ab-status" id="abStatus">Aktivna: <strong>Verzija B</strong></div>
+        </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

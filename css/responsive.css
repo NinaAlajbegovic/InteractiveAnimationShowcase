@@ -47,6 +47,10 @@
         grid-template-columns: 1fr;
     }
 
+    .svg-icons-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .perf-comparison {
         grid-template-columns: 1fr;
     }
@@ -80,7 +84,8 @@
     }
 
     .h-scroll-panel {
-        min-height: 250px;
+        height: auto;
+        min-height: 100vh;
         padding: 2rem;
     }
 }

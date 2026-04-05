@@ -90,3 +90,241 @@ code {
     font-size: 0.85em;
     font-family: 'SF Mono', 'Fira Code', monospace;
 }
+
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--gradient-1);
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 9999;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+}
+
+/* A/B Toggle Panel */
+.ab-toggle-panel {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 9999;
+}
+
+.ab-toggle-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.ab-toggle-btn:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: var(--purple);
+    transform: rotate(45deg);
+}
+
+.ab-settings {
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    width: 340px;
+    background: rgba(18, 18, 26, 0.97);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.ab-settings.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.ab-settings h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.ab-desc {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.ab-option {
+    margin-bottom: 0.75rem;
+}
+
+.ab-radio {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.ab-radio:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.ab-radio input[type="radio"] {
+    display: none;
+}
+
+.ab-radio-mark {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    transition: all 0.2s ease;
+}
+
+.ab-radio-mark::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--purple);
+    transform: scale(0);
+    transition: transform 0.2s ease;
+}
+
+.ab-radio input:checked ~ .ab-radio-mark {
+    border-color: var(--purple);
+}
+
+.ab-radio input:checked ~ .ab-radio-mark::after {
+    transform: scale(1);
+}
+
+.ab-radio input:checked ~ .ab-radio-label {
+    color: var(--text-primary);
+}
+
+.ab-radio-label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    color: var(--text-secondary);
+}
+
+.ab-radio-label strong {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.ab-radio-label small {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.ab-status {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-align: center;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Version A: No animations mode */
+body.version-a *,
+body.version-a *::before,
+body.version-a *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+}
+
+body.version-a .hover-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+body.version-a .reveal-card,
+body.version-a .hover-card,
+body.version-a .loading-item,
+body.version-a .tip-card,
+body.version-a .svg-icon-item {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+body.version-a .spinner {
+    animation: none !important;
+}
+
+body.version-a .spinner * {
+    animation: none !important;
+}
+
+body.version-a .hero-title .title-line,
+body.version-a .hero-description,
+body.version-a .hero-cta,
+body.version-a .hero-badge,
+body.version-a .hero-stats {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+body.version-a .parallax-shape {
+    animation: none !important;
+}
+
+body.version-a .back-to-top {
+    transition-duration: 0.01ms !important;
+}
+
+body.version-a .gradient-orb {
+    animation: none !important;
+}
+
+body.version-a .reading-progress {
+    transition-duration: 0.01ms !important;
+}
