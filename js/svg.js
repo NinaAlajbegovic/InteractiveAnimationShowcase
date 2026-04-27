@@ -21,19 +21,4 @@ function initSVGAnimations() {
             });
         });
     });
-
-    ScrollTrigger.create({
-        trigger: '.svg-icons-grid',
-        start: 'top 80%',
-        once: true,
-        onEnter: () => {
-            gsap.from('.svg-icon-item', {
-                scale: 0,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: 'back.out(1.7)'
-            });
-        }
-    });
 }

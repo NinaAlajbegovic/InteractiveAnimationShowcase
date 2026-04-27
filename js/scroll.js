@@ -1,30 +1,17 @@
 function initScrollRevealAnimations() {
-    gsap.utils.toArray('.section-header').forEach(header => {
-        gsap.from(header.children, {
-            y: 40,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.15,
-            ease: 'power3.out',
-            immediateRender: false,
-            scrollTrigger: {
-                trigger: header,
-                start: 'top 85%',
-                once: true
-            }
-        });
-    });
-
+    // Reveal samo naslova/opisa unutar demo-block (ne cijelog bloka — uzrokovalo je flash na scrollu)
     gsap.utils.toArray('.demo-block').forEach(block => {
-        gsap.from(block, {
-            y: 30,
+        const intro = block.querySelectorAll(':scope > .demo-title, :scope > .demo-description');
+        if (!intro.length) return;
+        gsap.from(intro, {
+            y: 20,
             opacity: 0,
-            duration: 0.8,
+            duration: 0.6,
+            stagger: 0.1,
             ease: 'power3.out',
-            immediateRender: false,
             scrollTrigger: {
                 trigger: block,
-                start: 'top 85%',
+                start: 'top 90%',
                 once: true
             }
         });
@@ -33,7 +20,7 @@ function initScrollRevealAnimations() {
     const revealCards = document.querySelectorAll('.reveal-card');
     revealCards.forEach(card => {
         const classList = card.classList;
-        let fromVars = { opacity: 0, duration: 0.8, ease: 'power3.out', immediateRender: false };
+        let fromVars = { opacity: 0, duration: 0.8, ease: 'power3.out' };
 
         if (classList.contains('reveal-fade-up')) fromVars.y = 60;
         else if (classList.contains('reveal-fade-left')) fromVars.x = -100;
@@ -50,21 +37,6 @@ function initScrollRevealAnimations() {
                 once: true
             }
         });
-    });
-
-    ScrollTrigger.create({
-        trigger: '.hover-demos',
-        start: 'top 80%',
-        once: true,
-        onEnter: () => {
-            gsap.from('.hover-card', {
-                y: 40,
-                opacity: 0,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: 'power3.out'
-            });
-        }
     });
 
     ScrollTrigger.create({
@@ -93,6 +65,21 @@ function initScrollRevealAnimations() {
                 duration: 0.6,
                 stagger: 0.1,
                 ease: 'power3.out'
+            });
+        }
+    });
+
+    ScrollTrigger.create({
+        trigger: '.svg-demo-grid',
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+            gsap.from('.svg-draw-item', {
+                scale: 0.8,
+                opacity: 0,
+                duration: 0.5,
+                stagger: 0.1,
+                ease: 'back.out(1.5)'
             });
         }
     });
